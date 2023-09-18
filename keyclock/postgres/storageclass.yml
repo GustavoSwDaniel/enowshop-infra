@@ -1,0 +1,19 @@
+allowVolumeExpansion: true
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: postgres-sc
+parameters:
+  type: pd-standard
+provisioner: kubernetes.io/gce-pd
+reclaimPolicy: Delete
+volumeBindingMode: WaitForFirstConsumer
+
+
+gcloud compute ssh enowshop --project=enowhop --zone=us-east4-1 -- -L 5432:enowhop:us-east4:enowshop:5432 -N
+
+
+kubectl create secret generic db-secrets\
+  --from-literal=username=postgress \
+  --from-literal=password=posgress \
+  --from-literal=database=enowshop

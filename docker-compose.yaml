@@ -1,0 +1,29 @@
+# gustavo e-nowshop-infrastructure → λ git master* → docker run --name enowshops -p 5432:5432 -e POSTGRES_DB=enowshop -e POSTGRES_USER=enowshop -e POSTGRES_PASSWORD=enowshop -d postgres
+version: '3'
+
+services:
+  db:
+    image: postgres
+    container_name: enowshops2
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: enowshop
+      POSTGRES_USER: enowshop
+      POSTGRES_DB: enowshop
+    networks:
+      - internal-network
+    ports:
+      - "5432:5432"
+
+  migrations:
+    build:
+        context: .../e-nowshop-migrations/src
+        dockerfile: Dockerfile
+    container_name: migrations
+    networks:
+      - internal-network
+
+
+networks:
+  internal-network:
+    driver: bridge

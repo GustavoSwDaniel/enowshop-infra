@@ -1,0 +1,61 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-resource
+  annotations:
+    kubernetes.io/ingress.class: "nginx"
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    nginx.ingress.kubernetes.io/rewrite-target: /$2
+    cert-manager.io/cluster-issuer: letsencrypt-prod
+spec:
+  tls:
+  - hosts :
+    - "api.e-nowshop.com.br"
+    secretName: "api-enowshop-tls"
+  rules:
+  - host: 'api.e-nowshop.com.br'
+    http:
+      paths:
+      - pathType: Prefix
+        path: /user(/|$)(.*)
+        backend:
+          service:
+            name: enowshop-api-user-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /invetory(/|$)(.*)
+        backend:
+          service:
+            name: enowshop-api-user-invetory
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /admin(/|$)(.*)
+        backend:
+          service:
+            name: enowshop-api-administrative-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /order(/|$)(.*)
+        backend:
+          service:
+            name: enowshop-api-order-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /metrics(/|$)(.*)
+        backend:
+          service:
+            name: enowshop-api-metrics-service
+            port:
+              number: 80
+      - pathType: Prefix
+        path: /postgres(/|$)(.*)
+        backend:
+          service:
+            name: enowshop-postgresql
+            port:
+              number: 5432

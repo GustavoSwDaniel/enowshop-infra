@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongodb-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mongodb-deployment
+  template:
+    metadata:
+      labels:
+        app: mongodb-deployment
+    spec:
+      containers:
+        - name: mongodb-deployment
+          image: mongo:latest
+          ports:
+              - containerPort: 27017
+          env:
+            - name: A_VUE_APP_BASE_BACKEND_URL
+              value: http://35.245.229.86.nip.io
+            - name: A_VUE_APP_BASE_BACKEND_URL_USER
+              value: http://35.245.229.86.nip.io/user
+            - name: A_VUE_APP_BASE_BACKEND_URL_PRODUCTS
+              value: http://35.245.229.86.nip.io/invetory
+            - name: A_VUE_APP_BASE_BACKEND_URL_ADM
+              value: http://35.245.229.86.nip.io/admin
+            
+

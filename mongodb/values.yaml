@@ -1,0 +1,7 @@
+auth:
+  enabled: true
+  adminUser: admin
+  adminPassword: nTwLmVAbiU
+
+
+helm install mongodb oci://registry-1.docker.io/bitnamicharts/mongodb --set mongodbRootPassword=nTwLmVAbiU,mongodbUsername=admin,mongodbPassword=nTwLmVAbiU,mongodbDatabase=enowsho

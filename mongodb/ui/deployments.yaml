@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo-express
+spec:
+  selector:
+    matchLabels:
+      app: mongo-express
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: mongo-express
+    spec:
+      containers:
+        - name: mongo-express
+          image: mongo-express:latest
+          ports:
+            - containerPort: 8081
+          env:
+            - name: ME_CONFIG_MONGODB_SERVER
+              value: mongodb.default.svc.cluster.local      # Nome do serviço MongoDB
+            - name: ME_CONFIG_MONGODB_ADMINUSERNAME
+              value: "root"
+            - name: ME_CONFIG_MONGODB_ADMINPASSWORD
+              value: "2JY69KLEpM"
+

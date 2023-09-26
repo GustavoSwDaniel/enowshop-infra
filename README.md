@@ -1,5 +1,17 @@
 # enowshop-infra
 
+## Repositorios do projeto de E-commerce
+
+https://github.com/GustavoSwDaniel/e-nowshop-api-user
+https://github.com/GustavoSwDaniel/e-nowshop-api-order
+https://github.com/GustavoSwDaniel/e-nowshop-models
+https://github.com/GustavoSwDaniel/e-nowshop-api-administrative
+https://github.com/GustavoSwDaniel/e-nowshop-api-invetory
+https://github.com/GustavoSwDaniel/e-nowshop-tasks
+https://github.com/GustavoSwDaniel/e-nowshop-api-metrics
+https://github.com/GustavoSwDaniel/e-nowshop-payment
+https://github.com/GustavoSwDaniel/e-nowshop-migrations
+https://github.com/GustavoSwDaniel/e-nowshop-worker
 
 ## Kubernetes yaml files
 # user-service
